@@ -15,3 +15,24 @@ test('AdRecord return null from unexisting entry', async ()=>{
 
     expect(ad).toBe(null)
 })
+
+test('AdRecord add record and return added entry', async ()=>{
+    const newRecord:AdRecord = new AdRecord({
+        name:"AddTest",
+        description:'',
+        price:0,
+        url:'https://localhost',
+        lat:0,
+        lon:0,
+    })
+
+    console.log(newRecord)
+
+    expect(newRecord).toBeInstanceOf(AdRecord)
+
+    const ad = await newRecord.addOne()
+
+    expect(ad).toBeDefined();
+    expect(ad).toBeInstanceOf(AdRecord)
+    expect(ad.id).toBeDefined();
+})
