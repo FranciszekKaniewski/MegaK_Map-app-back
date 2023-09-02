@@ -1,7 +1,8 @@
 import express, { json } from 'express';
 import 'express-async-errors'
 import cors from 'cors';
-import {handleError, ValidationError} from "./utils/errors";
+import {handleError} from "./utils/errors";
+import rateLimit from "express-rate-limit";
 
 const app = express();
 
@@ -9,10 +10,10 @@ app.use(cors({
     origin:'http://localhost:3000',
 }));
 app.use(json());
-
-// app.get('/',async (req,res)=>{
-//     throw new ValidationError("Error!");
-// });
+app.use(rateLimit({
+    windowMs: 5 * 60 * 1000,
+    max: 100,
+}))
 
 app.use(handleError)
 
