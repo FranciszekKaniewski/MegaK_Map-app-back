@@ -36,3 +36,21 @@ test('AdRecord add record and return added entry', async ()=>{
     expect(ad).toBeInstanceOf(AdRecord)
     expect(ad.id).toBeDefined();
 })
+
+
+test('AdRecord list search records', async ()=>{
+    const ads = await AdRecord.listBySearch('Test')
+
+    expect(ads).toBeDefined();
+    expect(ads).toBeInstanceOf(Array)
+    ads.map(ad=>{
+        expect(ad).toBeDefined();
+        expect(ad).toBeInstanceOf(AdRecord)
+        expect(ad.id).toBeDefined();
+    })
+})
+test('AdRecord list empty search', async ()=> {
+    const ads = await AdRecord.listBySearch('#')
+
+    expect(ads).toBe(null);
+})

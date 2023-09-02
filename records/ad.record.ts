@@ -68,4 +68,12 @@ export class AdRecord implements AdEntity{
 
         return new AdRecord(newEntity);
     }
+
+    static async listBySearch(search: string):Promise<AdRecord[]|null> {
+        const [results] = await pool.execute("Select * FROM `ads` WHERE `name` LIKE :name",{
+            name: '%'+search+'%',
+        }) as AdRecordResults;
+
+        return results.length === 0 ? null : results.map(result => new AdRecord(result))
+    }
 }
