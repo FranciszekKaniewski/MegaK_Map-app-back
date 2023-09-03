@@ -23,7 +23,7 @@ test('AdRecord return null from unexisting entry', async ()=>{
 
 test('AdRecord add record and return added entry', async ()=>{
     const newRecord:AdRecord = new AdRecord({
-        name:"AddTest",
+        name:"[ADD-TEST*&^!]AddTest",
         description:'',
         price:0,
         url:'https://localhost',
