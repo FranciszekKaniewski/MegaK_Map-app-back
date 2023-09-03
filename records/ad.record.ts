@@ -50,7 +50,7 @@ export class AdRecord implements AdEntity{
         return results.length === 0 ? null : new AdRecord(results[0])
     }
 
-    async addOne():Promise<AdRecord> {
+    async add():Promise<AdRecord> {
         const newEntity = {
             id: this.id,
             name: this.name,

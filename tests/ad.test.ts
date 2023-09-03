@@ -35,7 +35,7 @@ test('AdRecord add record and return added entry', async ()=>{
 
     expect(newRecord).toBeInstanceOf(AdRecord)
 
-    const ad = await newRecord.addOne()
+    const ad = await newRecord.add()
 
     expect(ad).toBeDefined();
     expect(ad).toBeInstanceOf(AdRecord)
