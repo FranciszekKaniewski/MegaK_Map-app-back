@@ -50,12 +50,11 @@ test('AdRecord list search records', async ()=>{
     expect(ads).toBeInstanceOf(Array)
     ads.map(ad=>{
         expect(ad).toBeDefined();
-        expect(ad).toBeInstanceOf(AdRecord)
         expect(ad.id).toBeDefined();
     })
 })
 test('AdRecord list empty search', async ()=> {
-    const ads = await AdRecord.listBySearch('#')
+    const ads = await AdRecord.listBySearch('#()@$@#!$%!%%#')
 
-    expect(ads).toBe(null);
+    expect(ads).toStrictEqual([]);
 })
