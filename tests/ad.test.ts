@@ -1,4 +1,9 @@
 import {AdRecord} from "../records/ad.record";
+import {pool} from "../utils/db";
+
+afterAll(async () =>{
+    await pool.end();
+})
 
 test('AdRecord return data from database for one entry', async () =>{
     const ad = await AdRecord.getOne('abc')
